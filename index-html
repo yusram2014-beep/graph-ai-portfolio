@@ -71,9 +71,8 @@
     .btn.primary{background:linear-gradient(135deg, rgba(124,58,237,.85), rgba(14,165,233,.85)); border-color:transparent}
     .hero-card{border-radius:var(--radius-xl); border:1px solid var(--border); background:radial-gradient(120% 120% at 100% 0%, rgba(34,211,238,.15), transparent 40%), var(--card); padding:22px; box-shadow: var(--shadow)}
     .hero-portrait{display:flex; align-items:center; justify-content:center}
-    .portrait{width:200px; aspect-ratio:1/1; border-radius:50%; background:
-      radial-gradient(120% 120% at 30% 20%, rgba(124,58,237,.9), transparent 60%),
-      radial-gradient(120% 120% at 80% 70%, rgba(14,165,233,.8), transparent 55%), #0f172a; border:4px solid rgba(255,255,255,.9); box-shadow:var(--shadow); outline:8px solid rgba(255,255,255,.08)}
+    .portrait{width:200px; aspect-ratio:1/1; border-radius:50%; overflow:hidden; border:4px solid rgba(255,255,255,.9); box-shadow:var(--shadow); outline:8px solid rgba(255,255,255,.08); background:#0f172a}
+    .portrait img{width:100%; height:100%; object-fit:cover; display:block; image-rendering:auto;}
     .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.06); font-weight:700; font-size:12px}
     .badge .dot{width:8px; height:8px; border-radius:99px; background:var(--brand-3); box-shadow:0 0 0 4px rgba(34,211,238,.2)}
 
@@ -156,7 +155,9 @@
           </div>
         </div>
         <aside class="hero-portrait" aria-label="Portrait">
-          <div class="portrait" title="Portrait placeholder"></div>
+          <div class="portrait" title="Portrait">
+            <img src="https://raw.githubusercontent.com/yusram2014-beep/graph-ai-portfolio/main/My%20Picture%20.jpg" alt="Portrait of YUSUF" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='https://github.com/yusram2014-beep/graph-ai-portfolio/blob/main/My%20Picture%20.jpg?raw=1';" />
+          </div>
         </aside>
       </div>
     </section>
