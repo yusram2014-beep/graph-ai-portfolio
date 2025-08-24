@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YUSUF — Generative AI for Work & Research</title>
+  <meta name="description" content="YUSUF's one‑page portfolio for the Generative AI for Work & Research course: about me, about the course, and weekly submissions." />
+  <meta property="og:title" content="YUSUF — Generative AI for Work & Research" />
+  <meta property="og:description" content="About me • About the course • Weekly submissions" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --bg-2: #0d1226;
+      --fg: #EAF1FF;
+      --muted: #b6c0e0;
+      --brand: #7c3aed; /* violet */
+      --brand-2: #06b6d4; /* cyan */
+      --brand-3: #22d3ee; /* sky */
+      --accent-1: #ef4444; /* red */
+      --accent-2: #f59e0b; /* amber */
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --space: clamp(16px, 2vw, 24px);
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 800px at 10% -10%, #1e293b 0%, transparent 60%),
+        radial-gradient(900px 800px at 110% 10%, #0ea5e9 0%, transparent 50%),
+        radial-gradient(1000px 700px at -10% 90%, #7c3aed 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      background-attachment: fixed;
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .container{max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(16px,4vw,28px)}
+
+    /* --- Top Nav --- */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter: saturate(1.2) blur(10px); background: linear-gradient(180deg, rgba(8,12,24,.8), rgba(8,12,24,.55)); border-bottom: 1px solid var(--border)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:10px 0}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.3px}
+    .logo{width:34px; aspect-ratio:1/1; border-radius:12px; position:relative; overflow:hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07), 0 6px 18px rgba(0,0,0,.35); background: conic-gradient(from 210deg, var(--brand), var(--brand-2), var(--brand-3), var(--brand))}
+    .nav a{opacity:.9; text-decoration:none; font-weight:600; padding:10px 12px; border-radius:12px}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+
+    /* --- Hero --- */
+    .hero{position:relative; padding:clamp(48px,7vw,100px) 0 30px}
+    .hero-grid{display:grid; gap:28px; align-items:center; grid-template-columns:1.3fr .9fr}
+    .title{font-size: clamp(28px, 5vw, 58px); line-height:1.05; margin:0 0 12px; font-weight:800; letter-spacing:.3px}
+    .title .grad{background: linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 45%, var(--brand-3) 100%); -webkit-background-clip: text; background-clip:text; color: transparent}
+    .title .role{display:block; background:linear-gradient(90deg, var(--accent-1), var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .subtitle{color:var(--muted); margin:6px 0 0}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:var(--glass); box-shadow: var(--shadow); cursor:pointer; text-decoration:none; font-weight:700}
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{background:linear-gradient(135deg, rgba(124,58,237,.85), rgba(14,165,233,.85)); border-color:transparent}
+    .hero-card{border-radius:var(--radius-xl); border:1px solid var(--border); background:radial-gradient(120% 120% at 100% 0%, rgba(34,211,238,.15), transparent 40%), var(--card); padding:22px; box-shadow: var(--shadow)}
+    .hero-portrait{display:flex; align-items:center; justify-content:center}
+    .portrait{width:200px; aspect-ratio:1/1; border-radius:50%; overflow:hidden; border:4px solid rgba(255,255,255,.9); box-shadow:var(--shadow); outline:8px solid rgba(255,255,255,.08); background:#0f172a}
+    .portrait img{width:100%; height:100%; object-fit:cover; display:block; image-rendering:auto;}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.06); font-weight:700; font-size:12px}
+    .badge .dot{width:8px; height:8px; border-radius:99px; background:var(--brand-3); box-shadow:0 0 0 4px rgba(34,211,238,.2)}
+
+    /* --- Sections / Cards --- */
+    section{scroll-margin-top:80px; padding: clamp(40px, 6vw, 80px) 0}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:24px}
+    .section-head h2{font-size: clamp(22px, 3vw, 36px); margin:0}
+    .section-head p{color:var(--muted); margin:8px 0 0; max-width:70ch}
+
+    .grid{display:grid; gap:18px}
+    .cols-2{grid-template-columns: 1.1fr .9fr}
+    .cols-3{grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 900px){
+      .hero-grid, .cols-2, .cols-3{grid-template-columns:1fr}
+    }
+
+    .card{border-radius:var(--radius-lg); border:1px solid var(--border); background:var(--card); padding:20px; box-shadow: var(--shadow)}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0; color:var(--muted)}
+
+    /* --- About Me --- */
+    .profile{display:grid; grid-template-columns: 112px 1fr; gap:18px; align-items:center}
+    .avatar{width:100%; aspect-ratio:1/1; border-radius:18px; background:radial-gradient(160% 120% at 20% 0%, rgba(124,58,237,.8), transparent 45%), radial-gradient(140% 120% at 80% 100%, rgba(14,165,233,.7), transparent 35%), #111827; border:1px solid var(--border); box-shadow: var(--shadow)}
+    .kv{display:flex; flex-wrap:wrap; gap:10px}
+    .pill{padding:8px 12px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.04); font-weight:700; font-size:12px}
+
+    /* --- Weekly --- */
+    .week{display:flex; flex-direction:column; gap:10px}
+    .week .meta{display:flex; justify-content:space-between; align-items:center}
+    .week .meta .index{font-weight:800; opacity:.8}
+    .week .actions{display:flex; gap:10px}
+    .ghost{border:1px dashed var(--border); background:rgba(255,255,255,.03)}
+
+    /* --- Footer --- */
+    footer{padding:40px 0; color:var(--muted); border-top:1px solid var(--border); background:linear-gradient(180deg, rgba(124,58,237,.08), rgba(14,165,233,.08))}
+
+    /* --- Utilities --- */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    /* --- Scroll reveal --- */
+    .reveal{opacity:0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1; transform:none}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1; transform:none}
+      .btn:hover{transform:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>YUSUF · Generative AI for Work & Research</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about-me">About</a>
+        <a href="#about-course">Course</a>
+        <a href="#weekly">Portfolio</a>
+        <a href="#weekly">Submissions</a>
+        <a href="#" title="LinkedIn (coming soon)">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge" aria-label="Current focus"><span class="dot"></span> Navigating the frontier of applied GenAI</div>
+          <h1 class="title">Hello, I'm <span class="grad">YUSUF</span>
+            <br><span class="role">Pharmaceutical Quality Reviewer & GenAI Practitioner</span></h1>
+          <p class="subtitle">🚀 Transforming regulatory and research workflows into auditable, human‑centered AI systems that accelerate quality, compliance, and innovation.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#weekly">View weekly submissions</a>
+            <a class="btn" href="#about-course">Explore the course</a>
+          </div>
+        </div>
+        <aside class="hero-portrait" aria-label="Portrait">
+          <div class="portrait" title="Portrait">
+            <img src="https://raw.githubusercontent.com/yusram2014-beep/graph-ai-portfolio/main/My%20Picture%20.jpg" alt="Portrait of YUSUF" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='https://github.com/yusram2014-beep/graph-ai-portfolio/blob/main/My%20Picture%20.jpg?raw=1';" />
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about-me" class="container reveal">
+      <div class="section-head">
+        <div>
+          <h2>About me</h2>
+          <p>Concise CV highlights drawn from my regulatory science work. (Email intentionally omitted.)</p>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <div class="profile">
+            <div class="avatar" aria-hidden="true"></div>
+            <div>
+              <h3 style="margin:0">YUSUF</h3>
+              <p style="margin:.2rem 0 0; color:var(--muted)">Pharmaceutical Quality Reviewer · GenAI for regulated work</p>
+            </div>
+          </div>
+          <ul style="margin:16px 0 0; padding-left:18px">
+            <li><strong>Current role:</strong> Technical Officer / Pharmaceutical Quality Assessor, WHO – Geneva (Mar 2024–present)</li>
+            <li><strong>Previous:</strong> Principal Regulatory Officer & Team Lead, NAFDAC, Nigeria; Consultant Assessor, WHO PQT</li>
+            <li><strong>Expertise:</strong> Pharmaceutical quality assessment, GMP compliance, dossier evaluation, capacity building</li>
+            <li><strong>Education:</strong> M.Sc. Biotechnology Innovation & Regulatory Science (Purdue); M.Sc. Public Health (Univ. of Lagos); B.Sc. Pharmacy (Ahmadu Bello Univ.)</li>
+            <li><strong>Tools:</strong> Python, documentation & SOP design; MS Office; EPI‑Info</li>
+            <li><strong>Languages:</strong> English (Expert); Arabic (Beginner)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Selected achievements</h3>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Coordinated assessment of <strong>400+ post‑prequalification change applications</strong> with transparent decision logs (WHO).</li>
+            <li>Led dossier assessments and mentored assessors toward <strong>WHO GBT maturity level 3</strong> readiness (NAFDAC).</li>
+            <li>Contributed to global access to quality‑assured medicines through WHO PQT as a consultant assessor.</li>
+          </ul>
+          <h3 style="margin-top:18px">What I'm exploring</h3>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Evidence‑grounded reasoning & citations at scale.</li>
+            <li>Risk‑based validation of AI systems in pharma workflows.</li>
+            <li>Human‑in‑the‑loop designs that enhance judgment, not replace it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- About the Course -->
+    <section id="about-course" class="container reveal">
+      <div class="section-head">
+        <div>
+          <h2>About the course</h2>
+          <p>An 8‑week live cohort by <strong>GRAPH Courses</strong> (University of Geneva ecosystem) focused on <em>no‑code AI tools for task automation</em>, research acceleration, and communication. Workshops, help sessions, and a capstone project make it hands‑on and outcomes‑driven.</p>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Modules (overview)</h3>
+          <details open>
+            <summary><strong>01 · Websites, Documents & Presentations</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>How LLMs are trained; overview of popular providers</li>
+              <li>Generate Markdown, LaTeX, and HTML outputs</li>
+              <li>Build simple research websites with ChatGPT Canvas & Replit</li>
+              <li>Use Markdown for structured research docs</li>
+              <li>Intro to AI presentation tools for scientific communication</li>
+            </ul>
+          </details>
+          <details>
+            <summary><strong>02 · AI‑Automated Data Analysis</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>Use Code Interpreter for quick analyses</li>
+              <li>Automated dashboards with TheBricks</li>
+              <li>Process datasets & batch file conversions with Julius</li>
+              <li>Create automated reports & visualizations</li>
+              <li>Spreadsheet automations for recurring analyses</li>
+            </ul>
+          </details>
+          <details>
+            <summary><strong>03 · GenAI for Research & Text Analysis</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>Efficient literature reviews with Elicit & LiteRev</li>
+              <li>Text classification & sentiment analysis</li>
+              <li>Knowledge maps from document collections</li>
+              <li>Automated summarization & information synthesis</li>
+            </ul>
+          </details>
+          <details>
+            <summary><strong>04 · Custom GPTs & Chatbots</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>Chat architecture, context windows, and RAG systems</li>
+              <li>Build custom GPTs for specific use‑cases</li>
+              <li>Interactive chatbots with Botpress</li>
+              <li>Integrate knowledge bases with research materials</li>
+            </ul>
+          </details>
+          <details>
+            <summary><strong>05 · AI for Task Automation</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>Agent‑based systems & email response automations</li>
+              <li>AI agents for complex flows</li>
+              <li>Browser‑control agents for web tasks</li>
+            </ul>
+          </details>
+          <details>
+            <summary><strong>06 · GenAI for Communication & Outreach</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>Research summaries for different audiences</li>
+              <li>Figures & diagrams with AI tools</li>
+              <li>Video abstracts & explanations</li>
+              <li>Prompting for scientific visualization</li>
+              <li>Content scheduling for dissemination</li>
+            </ul>
+          </details>
+          <details>
+            <summary><strong>07 · Capstone Project & Showcase</strong></summary>
+            <ul style="margin-top:10px; padding-left:18px">
+              <li>Project check‑ins & peer feedback</li>
+              <li>Final presentations & public Q&A</li>
+            </ul>
+          </details>
+        </div>
+        <div class="card">
+          <h3>Bootcamp features</h3>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Weekly live workshops & help sessions</li>
+            <li>Private community forums</li>
+            <li>Personalized feedback on assessments</li>
+            <li>Capstone coaching & showcase</li>
+            <li>Shareable certificate</li>
+            <li>Lifetime access to tutorial library</li>
+          </ul>
+
+          <h3 style="margin-top:18px">Grading & attendance</h3>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Online quizzes: <strong>15%</strong></li>
+            <li>Workshop assignments: <strong>35%</strong></li>
+            <li>Attendance & participation: <strong>10%</strong></li>
+            <li>Final project: <strong>40%</strong></li>
+            <li>Passing grade: <strong>80%</strong></li>
+            <li>Attend at least <strong>5 workshops</strong> for full attendance credit</li>
+          </ul>
+
+          <h3 style="margin-top:18px">Instructors & mentors</h3>
+          <p style="margin:8px 0 0; color:var(--muted)">Led by a multi‑disciplinary team from the University of Geneva and global partners.</p>
+          <ul style="margin:8px 0 0; padding-left:18px; columns:2; gap:26px">
+            <li>Prof. Olivia Keiser — University of Geneva</li>
+            <li>Kene Nwosu — Data Analyst & PhD student</li>
+            <li>Prof. Flavio Coelho — FGV, Rio de Janeiro</li>
+            <li>Joy Vaz — R Developer, Data Analyst</li>
+            <li>Sara Botero Mesa — Course Coordinator</li>
+            <li>Sabina Rodriguez Velásquez — Data Scientist</li>
+            <li>Guy Wafeu — Data Analyst & Coordinator</li>
+            <li>Camille Beatrice Valera — Project Manager</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weekly Submissions -->
+    <section id="weekly" class="container reveal">
+      <div class="section-head">
+        <div>
+          <h2>My weekly submissions</h2>
+          <p>Placeholders for each week of the cohort. Links will be added as projects are published.</p>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 1</span><span>Websites & Docs</span></div>
+          <p>Project: Course site & document generation. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 2</span><span>Data Analysis</span></div>
+          <p>Automated analysis with Code Interpreter & dashboards. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 3</span><span>Text Analysis</span></div>
+          <p>Literature pipelines, classification & knowledge maps. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 4</span><span>Custom GPTs</span></div>
+          <p>Custom assistants & RAG prototypes. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 5</span><span>Automation</span></div>
+          <p>Email flows, agents, and browser automations. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 6</span><span>Comms & Outreach</span></div>
+          <p>Summaries, visuals, and video abstracts. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 7</span><span>Capstone</span></div>
+          <p>Final project build & polish. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+        </article>
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 8</span><span>Showcase</span></div>
+          <p>Presentation & public Q&A. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="#">Deck</a><a class="btn" href="#">Recording</a></div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap">
+        <p>© <span id="year"></span> YUSUF — Generative AI for Work & Research. Built with semantic HTML & vanilla CSS. No trackers. No frameworks.</p>
+        <div class="kv">
+          <span class="pill">Accessible</span>
+          <span class="pill">Responsive</span>
+          <span class="pill">Audit‑friendly</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <button id="toTop" aria-label="Back to top" style="position:fixed; right:18px; bottom:18px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--glass); color:var(--fg); box-shadow:var(--shadow); display:none; cursor:pointer">↑ Top</button>
+
+  <script>
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Back to top visibility
+    const topBtn = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      topBtn.style.display = window.scrollY > 500 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Year stamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
