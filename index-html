@@ -98,7 +98,7 @@
     .avatar{width:100%; aspect-ratio:1/1; border-radius:18px; background:radial-gradient(160% 120% at 20% 0%, rgba(124,58,237,.8), transparent 45%), radial-gradient(140% 120% at 80% 100%, rgba(14,165,233,.7), transparent 35%), #111827; border:1px solid var(--border); box-shadow: var(--shadow)}
     .kv{display:flex; flex-wrap:wrap; gap:10px}
     .pill{padding:8px 12px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.04); font-weight:700; font-size:12px}
-    .badge-soon{display:inline-block; padding:4px 8px; margin-left:8px; border-radius:999px; font-weight:800; font-size:11px; border:1px solid var(--border); background:linear-gradient(90deg, rgba(239,68,68,.25), rgba(245,158,11,.25)); color:var(--fg);}
+    .badge-soon{display:inline-block; padding:4px 8px; margin-left:8px; border-radius:999px; font-weight:800; font-size:11px; border:1px solid var(--border); background:linear-gradient(90deg, rgba(239,68,68,.25), rgba(245,158,11,.25)); color:var(--fg);} .badge-done{display:inline-block; padding:4px 8px; margin-left:8px; border-radius:999px; font-weight:800; font-size:11px; border:1px solid var(--border); background:linear-gradient(90deg, rgba(16,185,129,.35), rgba(34,197,94,.35)); color:var(--fg);} 
 
     /* --- Weekly --- */
     .week{display:flex; flex-direction:column; gap:10px}
@@ -157,7 +157,7 @@
         </div>
         <aside class="hero-portrait" aria-label="Portrait">
           <div class="portrait" title="Portrait">
-            <img src="https://raw.githubusercontent.com/yusram2014-beep/graph-ai-portfolio/main/My%20Picture%20.jpg" width="400" height="400"$1>
+            <img src="https://raw.githubusercontent.com/yusram2014-beep/graph-ai-portfolio/main/My%20Picture%20.jpg" width="400" height="400">
           </div>
         </aside>
       </div>
@@ -340,7 +340,7 @@
           <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 3</span><span>Text Analysis</span></div>
+          <div class="meta"><span class="index">Week 3</span><span>Text Analysis</span><span class="badge-done">Submitted</span></div>
           <p>Literature pipelines, classification & knowledge maps.</p>
           <div class="actions"><a class="btn" href="https://thegraphcourses.org/assignment/assignment-analyzing_job_market_data_with_llms_in_sheets_and_ai_tools/" target="_blank" rel="noopener noreferrer">Open assignment</a><a class="btn" href="#">Write‑up</a></div>
         </article>
@@ -384,7 +384,7 @@
     </footer>
   </main>
 
-  <button id="toTop" type="button"$1>↑ Top</button>
+  <button id="toTop" type="button">↑ Top</button>
 
   <script>
     // Reveal on scroll
@@ -410,7 +410,7 @@
   
   <!-- Floating Chatbot Launcher -->
   <!-- A minimal, accessible floating action button (FAB) that opens the chatbot -->
-  <button id="chat-launcher" type="button"$1>
+  <button id="chat-launcher" type="button">
     <!-- Simple chat bubble icon (SVG) to avoid external icon libs) -->
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm0-3h12v2H6V6zm0 6h8v2H6v-2z"/>
@@ -422,7 +422,7 @@
     <div class="cf-card">
       <div class="cf-head">
         <strong id="cf-title">Chat</strong>
-        <button id="cf-close" type="button"$1>×</button>
+        <button id="cf-close" type="button">×</button>
       </div>
       <div class="cf-body">
         <p>If the assistant widget doesn’t open, it may be blocked by a network policy. This lightweight panel is a placeholder.</p>
