@@ -399,7 +399,63 @@
     // Year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-<script src="https://files.bpcontent.cloud/2025/09/07/17/20250907175552-VAH0LCMG.js" defer></script> 
+  
+  <!-- Floating Chatbot Launcher -->
+  <!-- A minimal, accessible floating action button (FAB) that opens the chatbot -->
+  <button id="chat-launcher" aria-label="Open chat" title="Chat with me">
+    <!-- Simple chat bubble icon (SVG) to avoid external icon libs) -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm0-3h12v2H6V6zm0 6h8v2H6v-2z"/>
+    </svg>
+  </button>
+
+  <style>
+    /* --- Chatbot: Floating button and container styles --- */
+    #chat-launcher{
+      position: fixed; right: 18px; bottom: 18px; z-index: 1000;
+      width: 54px; height: 54px; border-radius: 50%;
+      display: inline-grid; place-items: center;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(14,165,233,.95));
+      color: white; cursor: pointer; box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    #chat-launcher:hover{ transform: translateY(-2px); }
+    #chat-launcher:focus-visible{ outline: 3px solid rgba(34,211,238,.6); outline-offset: 2px; }
+
+    /* Optional: adjust the built‑in Botpress widget z‑index so it layers above cards */
+    .bp-widget, .bp-widget-container{ z-index: 1001 !important; }
+  </style>
+
+  <!-- Botpress WebChat (Cloud) scripts -->
+  <!-- inject.js renders the client; the second script contains your bot config & ID -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/09/07/17/20250907175552-VAH0LCMG.js" defer></script>
+
+  <script>
+    // --- Chatbot bootstrap & launcher wiring ---
+    // The bot config script usually auto-initializes the widget. We hide its default
+    // launcher by not showing it on load and provide our own FAB. If your bot config
+    // auto-displays the widget, this handler will simply focus/open it when clicked.
+
+    // Helper to open the Botpress widget regardless of version differences
+    function openBotpressChat(){
+      const w = window.botpressWebChat;
+      // v0.x / v1 style
+      if(w && typeof w.open === 'function'){ w.open(); return; }
+      // some configs expose sendEvent API
+      if(w && typeof w.sendEvent === 'function'){ w.sendEvent({ type: 'show' }); return; }
+      // fallback: try opening the container if present
+      const container = document.querySelector('.bp-widget, .bp-widget-container');
+      if(container){ container.style.display = 'block'; }
+    }
+
+    // Attach after page load to ensure Botpress has injected its scripts
+    window.addEventListener('DOMContentLoaded', function(){
+      const launcher = document.getElementById('chat-launcher');
+      if(!launcher) return;
+      launcher.addEventListener('click', openBotpressChat);
+    });
+  </script>
 </body>
 </html>
