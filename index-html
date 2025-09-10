@@ -98,6 +98,7 @@
     .avatar{width:100%; aspect-ratio:1/1; border-radius:18px; background:radial-gradient(160% 120% at 20% 0%, rgba(124,58,237,.8), transparent 45%), radial-gradient(140% 120% at 80% 100%, rgba(14,165,233,.7), transparent 35%), #111827; border:1px solid var(--border); box-shadow: var(--shadow)}
     .kv{display:flex; flex-wrap:wrap; gap:10px}
     .pill{padding:8px 12px; border:1px solid var(--border); border-radius:999px; background:rgba(255,255,255,.04); font-weight:700; font-size:12px}
+    .badge-soon{display:inline-block; padding:4px 8px; margin-left:8px; border-radius:999px; font-weight:800; font-size:11px; border:1px solid var(--border); background:linear-gradient(90deg, rgba(239,68,68,.25), rgba(245,158,11,.25)); color:var(--fg);}
 
     /* --- Weekly --- */
     .week{display:flex; flex-direction:column; gap:10px}
@@ -156,7 +157,7 @@
         </div>
         <aside class="hero-portrait" aria-label="Portrait">
           <div class="portrait" title="Portrait">
-            <img src="https://raw.githubusercontent.com/yusram2014-beep/graph-ai-portfolio/main/My%20Picture%20.jpg" alt="Portrait of YUSUF" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='https://github.com/yusram2014-beep/graph-ai-portfolio/blob/main/My%20Picture%20.jpg?raw=1';" />
+            <img src="https://raw.githubusercontent.com/yusram2014-beep/graph-ai-portfolio/main/My%20Picture%20.jpg" width="400" height="400"$1>
           </div>
         </aside>
       </div>
@@ -329,42 +330,42 @@
       </div>
       <div class="grid cols-3">
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 1</span><span>Websites & Docs</span></div>
+          <div class="meta"><span class="index">Week 1</span><span>Websites & Docs</span><span class="badge-soon">Soon</span></div>
           <p>Project: Course site & document generation. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 2</span><span>Data Analysis</span></div>
+          <div class="meta"><span class="index">Week 2</span><span>Data Analysis</span><span class="badge-soon">Soon</span></div>
           <p>Automated analysis with Code Interpreter & dashboards. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
           <div class="meta"><span class="index">Week 3</span><span>Text Analysis</span></div>
-          <p>Literature pipelines, classification & knowledge maps. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="https://github.com/yusram2014-beep/graph-ai-portfolio/blob/main/Workshop%203%20assignment" target="_blank" rel="noopener noreferrer">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <p>Literature pipelines, classification & knowledge maps.</p>
+          <div class="actions"><a class="btn" href="https://thegraphcourses.org/assignment/assignment-analyzing_job_market_data_with_llms_in_sheets_and_ai_tools/" target="_blank" rel="noopener noreferrer">Open assignment</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 4<\/span><span>Custom GPTs<\/span><\/div>
+          <div class="meta"><span class="index">Week 4</span><span>Custom GPTs</span><span class="badge-soon">Soon</span></div>
           <p>Custom assistants & RAG prototypes. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 5</span><span>Automation</span></div>
+          <div class="meta"><span class="index">Week 5</span><span>Automation</span><span class="badge-soon">Soon</span></div>
           <p>Email flows, agents, and browser automations. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 6</span><span>Comms & Outreach</span></div>
+          <div class="meta"><span class="index">Week 6</span><span>Comms & Outreach</span><span class="badge-soon">Soon</span></div>
           <p>Summaries, visuals, and video abstracts. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 7</span><span>Capstone</span></div>
+          <div class="meta"><span class="index">Week 7</span><span>Capstone</span><span class="badge-soon">Soon</span></div>
           <p>Final project build & polish. <em>Coming soon.</em></p>
-          <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
+          <div class="actions"><a class="btn" href="#">Open preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 8</span><span>Showcase</span></div>
+          <div class="meta"><span class="index">Week 8</span><span>Showcase</span><span class="badge-soon">Soon</span></div>
           <p>Presentation & public Q&A. <em>Coming soon.</em></p>
           <div class="actions"><a class="btn" href="#">Deck</a><a class="btn" href="#">Recording</a></div>
         </article>
@@ -383,14 +384,18 @@
     </footer>
   </main>
 
-  <button id="toTop" aria-label="Back to top" style="position:fixed; right:18px; bottom:88px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--glass); color:var(--fg); box-shadow:var(--shadow); display:none; cursor:pointer">↑ Top</button>
+  <button id="toTop" type="button"$1>↑ Top</button>
 
   <script>
     // Reveal on scroll
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, {threshold: .12});
+    if ('IntersectionObserver' in window) {
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+  }
 
     // Back to top visibility
     const topBtn = document.getElementById('toTop');
@@ -405,7 +410,7 @@
   
   <!-- Floating Chatbot Launcher -->
   <!-- A minimal, accessible floating action button (FAB) that opens the chatbot -->
-  <button id="chat-launcher" aria-label="Open chat" title="Chat with me">
+  <button id="chat-launcher" type="button"$1>
     <!-- Simple chat bubble icon (SVG) to avoid external icon libs) -->
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 9h12v2H6V9zm0-3h12v2H6V6zm0 6h8v2H6v-2z"/>
@@ -417,7 +422,7 @@
     <div class="cf-card">
       <div class="cf-head">
         <strong id="cf-title">Chat</strong>
-        <button id="cf-close" aria-label="Close chat">×</button>
+        <button id="cf-close" type="button"$1>×</button>
       </div>
       <div class="cf-body">
         <p>If the assistant widget doesn’t open, it may be blocked by a network policy. This lightweight panel is a placeholder.</p>
@@ -496,4 +501,3 @@
   </script>
 </body>
 </html>
-
