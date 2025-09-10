@@ -338,10 +338,13 @@
           <p>Automated analysis with Code Interpreter & dashboards. <em>Coming soon.</em></p>
           <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
-        $1<a class=\"btn\" href=\"https://github.com/yusram2014-beep/graph-ai-portfolio/blob/main/Workshop%203%20assignment\" target=\"_blank\" rel=\"noopener noreferrer\">Repo folder</a><a class=\"btn\" href=\"#\">Write‑up</a>$2
+        <article class="card ghost week">
+          <div class="meta"><span class="index">Week 3</span><span>Text Analysis</span></div>
+          <p>Literature pipelines, classification & knowledge maps. <em>Coming soon.</em></p>
+          <div class="actions"><a class="btn" href="https://github.com/yusram2014-beep/graph-ai-portfolio/blob/main/Workshop%203%20assignment" target="_blank" rel="noopener noreferrer">Preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
         <article class="card ghost week">
-          <div class="meta"><span class="index">Week 4</span><span>Custom GPTs</span></div>
+          <div class="meta"><span class="index">Week 4<\/span><span>Custom GPTs<\/span><\/div>
           <p>Custom assistants & RAG prototypes. <em>Coming soon.</em></p>
           <div class="actions"><a class="btn" href="#">Preview</a><a class="btn" href="#">Write‑up</a></div>
         </article>
@@ -380,7 +383,7 @@
     </footer>
   </main>
 
-  <button id="toTop" aria-label="Back to top" style="position:fixed; right:18px; bottom:18px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--glass); color:var(--fg); box-shadow:var(--shadow); display:none; cursor:pointer">↑ Top</button>
+  <button id="toTop" aria-label="Back to top" style="position:fixed; right:18px; bottom:88px; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--glass); color:var(--fg); box-shadow:var(--shadow); display:none; cursor:pointer">↑ Top</button>
 
   <script>
     // Reveal on scroll
@@ -409,11 +412,25 @@
     </svg>
   </button>
 
+  <!-- Fallback chat panel (appears if Botpress fails to load) -->
+  <div id="chat-fallback" role="dialog" aria-modal="true" aria-labelledby="cf-title" hidden>
+    <div class="cf-card">
+      <div class="cf-head">
+        <strong id="cf-title">Chat</strong>
+        <button id="cf-close" aria-label="Close chat">×</button>
+      </div>
+      <div class="cf-body">
+        <p>If the assistant widget doesn’t open, it may be blocked by a network policy. This lightweight panel is a placeholder.</p>
+        <p><em>Tip:</em> Try reloading or allow third‑party scripts for <code>botpress.cloud</code>.</p>
+      </div>
+    </div>
+  </div>
+
   <style>
     /* --- Chatbot: Floating button and container styles --- */
     #chat-launcher{
-      position: fixed; right: 18px; bottom: 18px; z-index: 1000;
-      width: 54px; height: 54px; border-radius: 50%;
+      position: fixed; right: 18px; bottom: 18px; z-index: 2000;
+      width: 56px; height: 56px; border-radius: 50%;
       display: inline-grid; place-items: center;
       border: 1px solid var(--border);
       background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(14,165,233,.95));
@@ -423,39 +440,60 @@
     #chat-launcher:hover{ transform: translateY(-2px); }
     #chat-launcher:focus-visible{ outline: 3px solid rgba(34,211,238,.6); outline-offset: 2px; }
 
-    /* Optional: adjust the built‑in Botpress widget z‑index so it layers above cards */
-    .bp-widget, .bp-widget-container{ z-index: 1001 !important; }
+    /* Botpress container layering (if present) */
+    .bp-widget, .bp-widget-container{ z-index: 3000 !important; }
+
+    /* Fallback panel */
+    #chat-fallback{ position: fixed; right: 18px; bottom: 88px; z-index: 2500; }
+    #chat-fallback .cf-card{ width: min(92vw, 360px); height: 420px; border-radius: 16px; box-shadow: var(--shadow); border:1px solid var(--border); background: var(--card); backdrop-filter: blur(8px); color: var(--fg); display:flex; flex-direction:column; }
+    #chat-fallback .cf-head{ display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--border); background: linear-gradient(90deg, rgba(124,58,237,.25), rgba(14,165,233,.25)); border-top-left-radius:16px; border-top-right-radius:16px; }
+    #chat-fallback #cf-close{ background: transparent; border:1px solid var(--border); color: var(--fg); border-radius:10px; padding:4px 10px; cursor:pointer; }
+    #chat-fallback .cf-body{ padding:14px; overflow:auto; }
   </style>
 
   <!-- Botpress WebChat (Cloud) scripts -->
-  <!-- inject.js renders the client; the second script contains your bot config & ID -->
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
   <script src="https://files.bpcontent.cloud/2025/09/07/17/20250907175552-VAH0LCMG.js" defer></script>
 
   <script>
-    // --- Chatbot bootstrap & launcher wiring ---
-    // The bot config script usually auto-initializes the widget. We hide its default
-    // launcher by not showing it on load and provide our own FAB. If your bot config
-    // auto-displays the widget, this handler will simply focus/open it when clicked.
-
-    // Helper to open the Botpress widget regardless of version differences
+    // Robust bootstrap & launcher wiring with fallback if Botpress is blocked.
+    function botpressAvailable(){
+      const w = window.botpressWebChat;
+      return !!(w && (typeof w.open === 'function' || typeof w.sendEvent === 'function'));
+    }
     function openBotpressChat(){
       const w = window.botpressWebChat;
-      // v0.x / v1 style
-      if(w && typeof w.open === 'function'){ w.open(); return; }
-      // some configs expose sendEvent API
-      if(w && typeof w.sendEvent === 'function'){ w.sendEvent({ type: 'show' }); return; }
-      // fallback: try opening the container if present
-      const container = document.querySelector('.bp-widget, .bp-widget-container');
-      if(container){ container.style.display = 'block'; }
+      if(!w){ return false; }
+      if(typeof w.open === 'function'){ w.open(); return true; }
+      if(typeof w.sendEvent === 'function'){ w.sendEvent({ type:'show' }); return true; }
+      return false;
     }
 
-    // Attach after page load to ensure Botpress has injected its scripts
-    window.addEventListener('DOMContentLoaded', function(){
+    function showFallback(open){
+      const el = document.getElementById('chat-fallback');
+      if(!el) return;
+      el.hidden = !open;
+    }
+
+    window.addEventListener('load', function(){
       const launcher = document.getElementById('chat-launcher');
-      if(!launcher) return;
-      launcher.addEventListener('click', openBotpressChat);
+      const closeBtn = document.getElementById('cf-close');
+      if(closeBtn){ closeBtn.addEventListener('click', ()=> showFallback(false)); }
+
+      // Poll briefly for Botpress readiness (covers slow networks)
+      let attempts = 0; const max = 40; // ~8s at 200ms
+      const iv = setInterval(()=>{
+        if(botpressAvailable() || attempts++ > max){ clearInterval(iv); }
+      }, 200);
+
+      launcher?.addEventListener('click', function(){
+        // Try to open Botpress; if not ready, toggle fallback panel
+        if(!openBotpressChat()){
+          showFallback(true);
+        }
+      });
     });
   </script>
 </body>
 </html>
+
