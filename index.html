@@ -122,6 +122,8 @@
       .reveal{opacity:1; transform:none}
       .btn:hover{transform:none}
     }
+  .form-embed{position:relative; width:100%; height:min(90vh, 880px)}
+    .form-embed iframe{position:absolute; inset:0; width:100%; height:100%; border:0; background:#fff}
   </style>
 </head>
 <body>
@@ -137,6 +139,7 @@
         <a href="#weekly">Portfolio</a>
         <a href="#weekly">Submissions</a>
         <a href="#" title="LinkedIn (coming soon)">LinkedIn</a>
+      <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -369,6 +372,21 @@
           <p>Presentation & public Q&A. <em>Coming soon.</em></p>
           <div class="actions"><a class="btn" href="#">Deck</a><a class="btn" href="#">Recording</a></div>
         </article>
+      </div>
+    </section>
+
+    <!-- Contact for Consultation -->
+    <section id="contact" class="container reveal">
+      <div class="section-head">
+        <div>
+          <h2>Contact for Consultation</h2>
+          <p>If you’d like to discuss a project, training, or GenAI strategy for regulated environments, use the form below.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:0; overflow:hidden">
+        <div class="form-embed">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeEdctt9JCZjxMIZPgIhBiBsClperSHFBnghteYx6IpKO0JHA/viewform?embedded=true" width="640" height="780" frameborder="0" marginheight="0" marginwidth="0" title="Consultation Request Form">Loading…</iframe>
+        </div>
       </div>
     </section>
 
